@@ -9,31 +9,29 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, StickerSendMessage, TemplateSendMessage,ButtonsTemplate,MessageAction
 )
-from transformers import T5Tokenizer, GPT2LMHeadModel
-import torch
 
-def ml(input):
-    tokenizer = T5Tokenizer.from_pretrained('rinna/japanese-gpt2-small')
-    tokenizer.do_lower_case = True  # due to some bug of tokenizer config loading
-    model = GPT2LMHeadModel.from_pretrained("rinna/japanese-gpt2-small")
-    model.load_state_dict(torch.load('Linebot2.pt', map_location=torch.device('cpu')))
-    input_ids = tokenizer.encode(input, return_tensors='pt')
-    beam_outputs = model.generate(
-        input_ids, 
-        pad_token_id=tokenizer.pad_token_id,
-        bos_token_id=tokenizer.bos_token_id,
-        eos_token_id=tokenizer.eos_token_id,
-        max_length=50, 
-        num_beams=5, 
-        no_repeat_ngram_size=2, 
-        num_return_sequences=5, 
-        early_stopping=True
-    )
-    s = []
-    print("Output:\n" + 100 * '-')
-    for i, beam_output in enumerate(beam_outputs):
-        s.append(tokenizer.decode(beam_output, skip_special_tokens=True))
-    return s
+# def ml(input):
+#     tokenizer = T5Tokenizer.from_pretrained('rinna/japanese-gpt2-small')
+#     tokenizer.do_lower_case = True  # due to some bug of tokenizer config loading
+#     model = GPT2LMHeadModel.from_pretrained("rinna/japanese-gpt2-small")
+#     model.load_state_dict(torch.load('Linebot2.pt', map_location=torch.device('cpu')))
+#     input_ids = tokenizer.encode(input, return_tensors='pt')
+#     beam_outputs = model.generate(
+#         input_ids, 
+#         pad_token_id=tokenizer.pad_token_id,
+#         bos_token_id=tokenizer.bos_token_id,
+#         eos_token_id=tokenizer.eos_token_id,
+#         max_length=50, 
+#         num_beams=5, 
+#         no_repeat_ngram_size=2, 
+#         num_return_sequences=5, 
+#         early_stopping=True
+#     )
+#     s = []
+#     print("Output:\n" + 100 * '-')
+#     for i, beam_output in enumerate(beam_outputs):
+#         s.append(tokenizer.decode(beam_output, skip_special_tokens=True))
+#     return s
 
 
 app = Flask(__name__)
@@ -100,8 +98,7 @@ flex_message = FlexSendMessage(
 
 @app.route("/")
 def test():
-    a  = ml("あいうえお")
-    return a
+    return "a"
 
 @app.route("/callback", methods=['POST'])
 def callback():
