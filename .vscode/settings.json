@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/ded5f051-c19e-4af4-919f-a2fe56c7efc1/resourceGroups/line/providers/Microsoft.Web/sites/linebot-midoku",
+    "appService.deploySubpath": "."
+}

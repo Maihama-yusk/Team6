@@ -1,0 +1,50 @@
+{
+    "type": "bubble",
+    "direction": "ltr",
+    "body": {
+      "type": "box",
+      "layout": "vertical",
+      "contents": [
+        {
+          "type": "text",
+          "align": "center",
+          "text": "どのテキストが適していますか？"
+        }
+      ]
+    },
+    "footer": {
+      "type": "box",
+      "layout": "horizontal",
+      "contents": [
+        {
+          "type": "button",
+          "action": {
+            "type": "message",
+            "label": "1",
+            "text": "1"
+          },
+          "style": "primary"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "message",
+            "label": "2",
+            "text": "2"
+          },
+          "style": "primary",
+          "margin": "5px"
+        },
+        {
+          "type": "button",
+          "action": {
+            "type": "message",
+            "label": "3",
+            "text": "3"
+          },
+          "margin": "5px",
+          "style": "primary"
+        }
+      ]
+    }
+  }
