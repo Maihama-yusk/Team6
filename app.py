@@ -11,6 +11,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage, FlexSendMessage, StickerSendMessage, TemplateSendMessage,ButtonsTemplate,MessageAction
 )
 
+
 from flask import Flask,render_template,request,abort
 import os
 import json
@@ -215,6 +216,7 @@ def ml(input):
 
 #Flaskオブジェクトの生成
 app = Flask(__name__)
+
 
 
 #「/」へアクセスがあった場合に、"Hello World"の文字列を返す
