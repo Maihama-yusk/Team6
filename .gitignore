@@ -1,2 +1,3 @@
-/line
 *.pt
+/venv
+/checkpoint
